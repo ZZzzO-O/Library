@@ -37,6 +37,11 @@ input, button {
     margin-top: 10px;
 }
 
+body {
+    border: 10px solid red; /* A temporary visual check */
+}
+
+
 button {
     background-color: #8b4513;
     color: white;
