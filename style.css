@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: 'Georgia', serif;
     background-color: #f5f0e1;
@@ -7,34 +8,33 @@ body {
     text-align: center;
 }
 
-h1 {
-    color: country redwood;
-}
-
+/* Header Styling */
 header {
     background-color: #8b4513;
     color: white;
     padding: 15px;
     border-radius: 5px;
+    font-size: 1.5em;
 }
 
-hr {
-    width: 50%;
-    margin: 20px auto;
-}
-
+/* Sections */
 section {
     background-color: rgba(255, 245, 230, 0.9);
-    padding: 15px;
+    padding: 20px;
     margin: 20px auto;
-    width: 50%;
+    width: 80%;
+    max-width: 600px; /* Prevents sections from being too wide */
     border-radius: 5px;
     box-shadow: 2px 2px 10px gray;
 }
 
+/* Upload Form */
 input, button {
     padding: 10px;
     margin-top: 10px;
+    width: 100%; /* Makes form elements full width */
+    max-width: 300px; /* But not too wide */
+    font-size: 1em;
 }
 
 button {
@@ -43,3 +43,52 @@ button {
     border: none;
     cursor: pointer;
 }
+
+button:hover {
+    background-color: #6b3610;
+}
+
+/* Book List */
+#book-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#book-list li {
+    background-color: white;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px gray;
+}
+
+#book-list a {
+    text-decoration: none;
+    color: #8b4513;
+    font-weight: bold;
+}
+
+#book-list a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    section {
+        width: 90%;
+    }
+
+    header {
+        font-size: 1.2em;
+        padding: 10px;
+    }
+
+    button, input {
+        font-size: 0.9em;
+    }
+}
+
