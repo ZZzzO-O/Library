@@ -4,24 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const bookList = document.getElementById("book-list");
     const uploadStatus = document.getElementById("upload-status");
 
-    // Load books from localStorage when the page loads
-    function loadBooks() {
-        const books = JSON.parse(localStorage.getItem("books")) || [];
-        bookList.innerHTML = ""; // Clear list before adding stored books
-
-        if (books.length === 0) {
-            bookList.innerHTML = "<li>No books uploaded yet.</li>";
-        } else {
-            books.forEach(book => {
-                const listItem = document.createElement("li");
-                listItem.innerHTML = `<a href="${book.url}" target="_blank">${book.name}</a>`;
-                bookList.appendChild(listItem);
-            });
-        }
-    }
-
-    loadBooks(); // Load books when the page loads
-
     form.addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -37,15 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const bookURL = URL.createObjectURL(file);
-        const bookName = file.name;
+        // Remove "No books uploaded yet." if it exists
+        if (bookList.children.length === 1 && bookList.children[0].textContent === "No books uploaded yet.") {
+            bookList.innerHTML = ""; 
+        }
 
-        // Save book info to localStorage
-        let books = JSON.parse(localStorage.getItem("books")) || [];
-        books.push({ name: bookName, url: bookURL });
-        localStorage.setItem("books", JSON.stringify(books));
-
-        loadBooks(); // Reload book list
+        // Add new book to the list
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `<a href="${URL.createObjectURL(file)}" target="_blank">${file.name}</a>`;
+        bookList.appendChild(listItem);
 
         uploadStatus.textContent = "Book uploaded successfully!";
         fileInput.value = "";
