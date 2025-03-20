@@ -3,32 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classic Book Library</title>
+    <title>Classic Library</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
 <body>
+
     <header>
-        <h1>📖 Classic Book Library 📚</h1>
-        <p>Explore timeless literature and rare collections.</p>
+        <h1>📚 Classic Library</h1>
+        <p>Welcome to your personal digital book collection.</p>
     </header>
 
-    <!-- Admin Login Section -->
-    <section id="admin-login">
-        <h2>Admin Login</h2>
-        <input type="password" id="admin-password" placeholder="Enter admin password">
-        <button onclick="checkPassword()">Login</button>
+    <hr>
+
+    <!-- Upload Section -->
+    <section id="upload-section">
+        <h2>Upload a Book (PDF Only)</h2>
+        <form id="upload-form">
+            <input type="file" id="fileInput" accept="application/pdf">
+            <button type="submit">Upload</button>
+        </form>
+        <p id="upload-status"></p>
     </section>
 
-    <!-- Upload Section (Hidden Initially) -->
-    <section id="add-book-section" style="display: none;">
-        <h2>Add a New Book</h2>
-        <form id="book-form">
-            <input type="text" id="title" placeholder="Book Title" required>
-            <input type="text" id="author" placeholder="Author" required>
-            <input type="file" id="book-file" a
+    <hr>
 
-        <p>&copy; 2025 The Old Library | All Rights Reserved</p>
-    </footer>
- </body>
+    <!-- Book List -->
+    <section id="library">
+        <h2>📖 Your Library</h2>
+        <ul id="book-list">
+            <li>No books uploaded yet.</li>
+        </ul>
+    </section>
+
+</body>
 </html>
