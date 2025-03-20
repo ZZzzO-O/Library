@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const genreSelect = document.getElementById("genreSelect");
     const uploadStatus = document.getElementById("upload-status");
 
-    // Load saved books from localStorage
+    // Load books from localStorage
     function loadBooks() {
         const savedBooks = JSON.parse(localStorage.getItem("books")) || {};
 
@@ -17,6 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 listItem.innerHTML = `<a href="${book.url}" target="_blank">${book.name}</a>`;
                 bookList.appendChild(listItem);
             });
+
+            // If the genre has no books, show default text
+            if (savedBooks[genre].length === 0) {
+                bookList.innerHTML = "<li>No books uploaded yet.</li>";
+            }
         }
     }
 
@@ -50,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Remove "No books uploaded yet." if it's the first book in the genre
         if (bookList.children.length === 1 && bookList.children[0].textContent === "No books uploaded yet.") {
-            bookList.innerHTML = ""; 
+            bookList.innerHTML = "";
         }
 
         // Add new book to the selected genre
@@ -62,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Save book in localStorage
         saveBook(selectedGenre, file.name, bookURL);
 
-        uploadStatus.textContent = `✅ Book uploaded to ${selectedGenre.charAt(0).toUpperCase() + selectedGenre.slice(1)}!`;
+        uploadStatus.textContent = `✅ Book uploaded to ${selectedGenre}!`;
         fileInput.value = "";
     });
 
