@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
-    
 <body>
 
     <header>
@@ -22,6 +21,18 @@
         <h2>Upload a Book (PDF Only)</h2>
         <form id="upload-form">
             <input type="file" id="fileInput" accept="application/pdf">
+            
+            <!-- Genre Selection -->
+            <select id="genreSelect">
+                <option value="GED">GED</option>
+                <option value="IELTS">IELTS</option>
+                <option value="SAT">SAT</option>
+                <option value="Duolingo">Duolingo</option>
+                <option value="General-English">General English</option>
+                <option value="Novels">Novels</option>
+                <option value="Others">Others</option>
+            </select>
+
             <button type="submit">Upload</button>
         </form>
         <p id="upload-status"></p>
@@ -29,12 +40,61 @@
 
     <hr>
 
-    <!-- Book List -->
+    <!-- Book Shelf with Genres -->
     <section id="library">
         <h2>📖 Your Library</h2>
-        <ul id="book-list">
-            <li>No books uploaded yet.</li>
-        </ul>
+
+        <div id="bookshelf">
+            <div class="genre" id="GED">
+                <h3>📖 GED</h3>
+                <ul class="book-list">
+                    <li>No books uploaded yet.</li>
+                </ul>
+            </div>
+
+            <div class="genre" id="IELTS">
+                <h3>📘 IELTS</h3>
+                <ul class="book-list">
+                    <li>No books uploaded yet.</li>
+                </ul>
+            </div>
+
+            <div class="genre" id="SAT">
+                <h3>📖 SAT</h3>
+                <ul class="book-list">
+                    <li>No books uploaded yet.</li>
+                </ul>
+            </div>
+
+            <div class="genre" id="Duolingo">
+                <h3>🔍 Duolingo</h3>
+                <ul class="book-list">
+                    <li>No books uploaded yet.</li>
+                </ul>
+            </div>
+
+            <div class="genre" id="General-English">
+                <h3>General English</h3>
+                <ul class="book-list">
+                    <li>No books uploaded yet.</li>
+                </ul>
+            </div>
+
+            <div class="genre" id="Novels">
+                <h3>Novels</h3>
+                <ul class="book-list">
+                    <li>No books uploaded yet.</li>
+                </ul>
+            </div>
+
+            <div class="genre" id="Others">
+                <h3>Others</h3>
+                <ul class="book-list">
+                    <li>No books uploaded yet.</li>
+                </ul>
+            </div>
+        </div>
+
     </section>
 
 </body>
