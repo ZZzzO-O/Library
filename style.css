@@ -7,6 +7,13 @@ body {
     text-align: center;
 }
 
+body {
+    background-color: lightgray;
+}
+h1 {
+    color: darkblue;
+}
+
 header {
     background-color: #8b4513;
     color: white;
