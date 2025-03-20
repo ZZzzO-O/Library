@@ -1,41 +1,29 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("book-form");
-    const bookList = document.getElementById("books");
-
-    function checkPassword() {
-        const password = document.getElementById("admin-password").value;
-        const correctPassword = "admin123"; // Change this password!
-
-        if (password === correctPassword) {
-            document.getElementById("add-book-section").style.display = "block"; // Show upload form
-            document.getElementById("admin-login").style.display = "none"; // Hide login
-        } else {
-            alert("Incorrect password!");
-        }
-    }
+    const form = document.getElementById("upload-form");
+    const fileInput = document.getElementById("fileInput");
+    const bookList = document.getElementById("book-list");
+    const uploadStatus = document.getElementById("upload-status");
 
     form.addEventListener("submit", function(event) {
         event.preventDefault();
 
-        const title = document.getElementById("title").value;
-        const author = document.getElementById("author").value;
-        const fileInput = document.getElementById("book-file");
-
         if (fileInput.files.length === 0) {
-            alert("Please upload a book.");
+            uploadStatus.textContent = "Please select a PDF file.";
             return;
         }
 
         const file = fileInput.files[0];
-        const fileURL = URL.createObjectURL(file); // Temporary URL for preview
+
+        if (file.type !== "application/pdf") {
+            uploadStatus.textContent = "Only PDF files are allowed.";
+            return;
+        }
 
         const listItem = document.createElement("li");
-        listItem.innerHTML = `<b>${title}</b> by ${author} - <a href="${fileURL}" target="_blank">Read PDF</a>`;
+        listItem.innerHTML = `<a href="${URL.createObjectURL(file)}" target="_blank">${file.name}</a>`;
         bookList.appendChild(listItem);
 
-        // Reset Form
-        form.reset();
+        uploadStatus.textContent = "Book uploaded successfully!";
+        fileInput.value = "";
     });
-
-    window.checkPassword = checkPassword; // Make the function accessible in HTML
 });
