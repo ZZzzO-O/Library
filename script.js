@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
 
+        console.log("JavaScript is working!");
+alert("JavaScript is loaded!");
+
         if (fileInput.files.length === 0) {
             uploadStatus.textContent = "Please select a PDF file.";
             return;
